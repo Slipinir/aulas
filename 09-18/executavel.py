@@ -1,6 +1,5 @@
 import tkinter
 import tkinter.messagebox
-from typing import TYPE_CHECKING
 import sqlalchemy
 
 class App:
