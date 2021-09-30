@@ -35,14 +35,34 @@ class App:
     def btn_conectar_onclick(self):
         self.conectar_banco()
 
-    def execute(self):
-        self.window.mainloop()
+    def metodo1():
+        for i in range(2):
+            print(f'{i}')
+
+    def execute(self, param1, param2, param3=None, param4=None):
+        print(param1)
+        print(param2)
+        print(param3)
+        print(param4)
+        self.execute(param2='oi', param3='bom', param1='tarde', param4='bom dia')
+        self.execute('oi', 'iu', 'ai', 'au')
+
+    def method(self, *args, **kwargs):
+        print(f'{args.count}')
+        print('o parametro args tem ' + str(args.count) + ' membros')
+        print(f'o parametro args tem {args.count} membros')
+        print(kwargs.get('parametro1'))
+        print(kwargs.get('parametro2'))
+        self.method('oi', 'tudo bom', 'blz', parametro1='oi', parametro2='tudo bem')
 
     def conectar_banco(self):
         engine = sqlalchemy.create_engine(f'firebird+fdb://{self.ent_usuario.get()}:{self.ent_senha.get()}@{self.ent_servidor.get()}:{self.ent_porta.get()}/{self.ent_banco.get()}')
         connection = engine.connect()
         result = connection.execute('SELECT COUNT(1) FROM EMPRESA')
         tkinter.messagebox.showinfo(message=f'Este banco tem {result} empresa(s)')
+
+def metodo_qualquer(param1):
+    print(param1)
 
 if __name__ == '__main__':
     App().execute()
